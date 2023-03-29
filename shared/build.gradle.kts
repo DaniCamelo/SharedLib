@@ -61,3 +61,15 @@ android {
         targetSdk = 33
     }
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.DaniCamelo"
+            artifactId = "SharedLib"
+            version = "1.0.0"
+
+            from(components["kotlin"])
+        }
+    }
+}
