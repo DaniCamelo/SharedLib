@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("maven-publish")
 }
 
 kotlin {
@@ -58,5 +59,17 @@ android {
     defaultConfig {
         minSdk = 26
         targetSdk = 33
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.DaniCamelo"
+            artifactId = "SharedLib"
+            version = "1.0.0"
+
+            from(components["kotlin"])
+        }
     }
 }
